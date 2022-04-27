@@ -8,6 +8,16 @@ CREATE DATABASE vendas CHARACTER SET utf8mb4
 ```
 
 
+### Acessar/entrar no banco criado
+```sql
+use database vendas;
+```
+### Adicionar coluna/campo em uma tabela
+```sql
+ALTER TABLE produtos ADD fabricante_id INT NOT NULL 
+AFTER preco;
+```
+
 ### Criar a tabela fabricantes
 
 ```sql
