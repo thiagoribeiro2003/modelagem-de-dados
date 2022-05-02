@@ -104,4 +104,15 @@ VALUES ('Positivo'), ('Microsoft');
  SELECT * FROM produtos; -- * = tudo
  SELECT nome, preco FROM produtos; -- FROM produtos; = pegar da tabela produtos
  SELECT nome FROM  produtos WHERE preco < 5000;
+ SELECT nome, descricao FROM produtos WHERE fabricante_id = 3; #Apple
  ```
+
+ ### Operadores Lógicos: E OU NÃO 
+```sql
+SELECT * FROM produtos 
+WHERE preco >= 5000 AND preco < 8000;
+
+SELECT nome, preco FROM produtos
+-- dos fabricantes apple e microsoft
+WHERE fabricante_id = 3 OR  fabricante_id = 7;
+```
