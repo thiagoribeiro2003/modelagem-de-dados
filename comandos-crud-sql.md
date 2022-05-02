@@ -101,5 +101,7 @@ VALUES ('Positivo'), ('Microsoft');
 
  ### Ler dados da tabela produtos
  ```sql
- SELECT * FROM produtos;
+ SELECT * FROM produtos; -- * = tudo
+ SELECT nome, preco FROM produtos; -- FROM produtos; = pegar da tabela produtos
+ SELECT nome FROM  produtos WHERE preco < 5000;
  ```
