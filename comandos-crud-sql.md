@@ -122,5 +122,8 @@ WHERE fabricante_id = 3 OR  fabricante_id = 7;
 ```sql
 SELECT nome, preco, quantidade FROM produtos
 WHERE NOT fabricante_id = 3; -- Versão 1 - usando NOT
+
+SELECT nome, preco, quantidade FROM produtos
+WHERE fabricante_id != 3; -- Versão 2 - Usando operador != (diferente)
 ```
 
