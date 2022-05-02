@@ -125,5 +125,8 @@ WHERE NOT fabricante_id = 3; -- Versão 1 - usando NOT
 
 SELECT nome, preco, quantidade FROM produtos
 WHERE fabricante_id != 3; -- Versão 2 - Usando operador != (diferente)
+
+SELECT nome, preco FROM produtos
+WHERE fabricante_id IN (3,8); -- Usando função IN(Lista) (Obs: IN não é um operador lógico).
 ```
 
