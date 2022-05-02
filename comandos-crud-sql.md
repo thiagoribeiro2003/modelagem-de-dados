@@ -96,3 +96,10 @@ INSERT INTO produtos(nome, descricao, preco, quantidade, fabricante_id) VALUES
 INSERT INTO fabricantes (nome)
 VALUES ('Positivo'), ('Microsoft');
  ```
+
+ ## SELECT
+
+ ### Ler dados da tabela produtos
+ ```sql
+ SELECT * FROM produtos;
+ ```
