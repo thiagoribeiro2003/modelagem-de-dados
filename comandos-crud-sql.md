@@ -115,4 +115,12 @@ WHERE preco >= 5000 AND preco < 8000;
 SELECT nome, preco FROM produtos
 -- dos fabricantes apple e microsoft
 WHERE fabricante_id = 3 OR  fabricante_id = 7;
+
+--Monte uma consulta que traga nome, preco e quantidade de todos os produtos exceto os do fabricante apple
 ```
+
+```sql
+SELECT nome, preco, quantidade FROM produtos
+WHERE NOT fabricante_id = 3; -- Versão 1 - usando NOT
+```
+
