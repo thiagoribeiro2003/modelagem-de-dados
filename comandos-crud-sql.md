@@ -124,9 +124,37 @@ SELECT nome, preco, quantidade FROM produtos
 WHERE NOT fabricante_id = 3; -- Versão 1 - usando NOT
 
 SELECT nome, preco, quantidade FROM produtos
-WHERE fabricante_id != 3; -- Versão 2 - Usando operador != (diferente)
+WHERE fabricante_id != 3; -- Versão 2 - Usando operador != (operador de diferença)
 
 SELECT nome, preco FROM produtos
 WHERE fabricante_id IN (3,8); -- Usando função IN(Lista) (Obs: IN não é um operador lógico).
+```
+### Filtros
+```sql
+SELECT nome, preco FROM produtos ORDER BY nome; -- ordem crescente (para letras em ordem alfabética)
+SELECT nome,preco FROM produtos ORDER BY nome DESC; -- ordem decrecente 
+
+SELECT nome, descricao FROM produtos 
+WHERE descricao LIKE '%processador%'; -- LIKE (COMO)
+ -- % OPERADOR CORINGA, PROCURE PELA PALAVRA PROCESSADOR NO MEIO DO TEXTO (SIGNIFICA QUALQUER TEXTO, NESSE CASO QUALQUER COISA ANTES OU DEPOIS DA PALAVRA NAO IMPORTA OQ É, APENAS A PALAVRA Q ESTA ENTRE OS %...%)
+```
+
+### Operações e Funções de agregação
+```sql
+SELECT SUM(preco) FROM produtos; -- SUM (SOMA)
+
+SELECT SUM(preco) AS TOTAL FROM produtos; -- AS É UM ALIAS (APELIDO) 
+-- ( 'TOTAL' Nesse caso esse total é um nome que você da)
+
+SELECT SUM(quantidade) AS "Quantidade em Estoque" FROM produtos;
+
+SELECT SUM(quantidade) AS "Quantidade em estoque" FROM produtos WHERE fabricante_id = 3; -- Apple
+
+-- AVG (MÉDIA)
+SELECT AVG(preco) AS "Média dos Preços" FROM produtos; -
+
+-- ROUND (Arredondamento) 
+SELECT ROUND(AVG(preco),2) AS "Média dos Preços" FROM produtos; -- a virgula igual no exemplo ...,2 serve para vc definir o número de casa decimais que vai aparecer
+
 ```
 
