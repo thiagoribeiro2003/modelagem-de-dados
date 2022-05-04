@@ -107,6 +107,7 @@ VALUES ('Positivo'), ('Microsoft');
  SELECT nome, descricao FROM produtos WHERE fabricante_id = 3; #Apple
  ```
 
+
  ### Operadores Lógicos: E OU NÃO 
 ```sql
 SELECT * FROM produtos 
@@ -118,7 +119,6 @@ WHERE fabricante_id = 3 OR  fabricante_id = 7;
 
 --Monte uma consulta que traga nome, preco e quantidade de todos os produtos exceto os do fabricante apple
 ```
-
 ```sql
 SELECT nome, preco, quantidade FROM produtos
 WHERE NOT fabricante_id = 3; -- Versão 1 - usando NOT
@@ -129,6 +129,8 @@ WHERE fabricante_id != 3; -- Versão 2 - Usando operador != (operador de diferen
 SELECT nome, preco FROM produtos
 WHERE fabricante_id IN (3,8); -- Usando função IN(Lista) (Obs: IN não é um operador lógico).
 ```
+
+
 ### Filtros
 ```sql
 SELECT nome, preco FROM produtos ORDER BY nome; -- ordem crescente (para letras em ordem alfabética)
@@ -141,7 +143,8 @@ WHERE descricao LIKE '%processador%'; -- LIKE (COMO)
 
 ### Operações e Funções de agregação
 ```sql
-SELECT SUM(preco) FROM produtos; -- SUM (SOMA)
+-- SUM (SOMA)
+SELECT SUM(preco) FROM produtos; 
 
 SELECT SUM(preco) AS TOTAL FROM produtos; -- AS É UM ALIAS (APELIDO) 
 -- ( 'TOTAL' Nesse caso esse total é um nome que você da)
@@ -150,11 +153,27 @@ SELECT SUM(quantidade) AS "Quantidade em Estoque" FROM produtos;
 
 SELECT SUM(quantidade) AS "Quantidade em estoque" FROM produtos WHERE fabricante_id = 3; -- Apple
 
+
 -- AVG (MÉDIA)
 SELECT AVG(preco) AS "Média dos Preços" FROM produtos; -
-
 -- ROUND (Arredondamento) 
 SELECT ROUND(AVG(preco),2) AS "Média dos Preços" FROM produtos; -- a virgula igual no exemplo ...,2 serve para vc definir o número de casa decimais que vai aparecer
 
+
+-- COUNT (CONTAGEM)
+SELECT COUNT(id) AS "Quantidade de Produtos" FROM produtos;
+
+
+-- DISTINCT é um comando para evitar a duplicidade na contagem de campos que não são chave-primária
+SELECT COUNT(DISTINCT fabricante_id) AS "Quantidade de fabricantes" FROM produtos; -- DISTINCT VAI VER Q O FABRICANTE SE REPETE E VAI CONTAR SOMENTE UMA VEZ
+
+SELECT nome, preco, quantidade, (preco * quantidade) AS total FROM produtos;
+```
+
+### Agrupamentos
+```sql
+-- GROUP BY permite segmentar resultados da consulta. Neste caso, somamos todos os preços e segmentos/agrupando por cada fabricante.
+SELECT fabricante_id, SUM(preco) AS Total FROM produtos
+GROUP BY fabricante_id;
 ```
 
