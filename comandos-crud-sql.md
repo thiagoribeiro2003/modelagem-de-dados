@@ -177,3 +177,27 @@ SELECT fabricante_id, SUM(preco) AS Total FROM produtos
 GROUP BY fabricante_id;
 ```
 
+
+## UPDATE (sempre com WHERE)
+
+### Atualizar dados de uma tabela
+```sql
+-- set(inserir)
+UPDATE fabricantes SET nome = 'Microsoft Brasil' WHERE id = 7;
+UPDATE fabricantes SET nome = 'Positivo' WHERE id = 8;
+
+--Mudar o preço do ultrabook da Positivo para 5200
+UPDATE produtos SET preco = 5200
+WHERE id = 7;
+
+--Mudar a quantidade dos produtos da Asus e da Apple para 15.
+UPDATE produtos SET quantidade = 15
+WHERE fabricante_id = 1 OR fabricante_id = 3;
+```
+
+### Excluir dados de uma tabela
+```sql
+DELETE FROM fabricantes WHERE id = 4; -- LG
+
+
+```
