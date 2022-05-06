@@ -240,4 +240,15 @@ FROM produtos INNER JOIN fabricantes
 ON produtos.fabricante_id = fabricantes.id
 GROUP BY fabricante
 ORDER BY Total;    
+
+
+-- trazer a quantidade de produtos de cada fabricante
+SELECT
+    fabricantes.nome AS Fabricante,
+    COUNT(produtos.fabricante_id) AS "Quantidade de produtos"
+FROM fabricantes INNER JOIN produtos
+ON produtos.fabricante_id = fabricantes.id
+GROUP BY fabricante;
 ```
+
+
