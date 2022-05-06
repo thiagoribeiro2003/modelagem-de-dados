@@ -242,11 +242,20 @@ GROUP BY fabricante
 ORDER BY Total;    
 
 
--- trazer a quantidade de produtos de cada fabricante
+-- INNER JOIN traz os registros somente daqueles fabricantes que tem produtos
 SELECT
     fabricantes.nome AS Fabricante,
     COUNT(produtos.fabricante_id) AS "Quantidade de produtos"
 FROM fabricantes INNER JOIN produtos
+ON produtos.fabricante_id = fabricantes.id
+GROUP BY fabricante;
+
+
+-- RIGHT/LEFT JOIN traz os registros mesmo daqueles fabricantes que não tem produtos
+SELECT
+    fabricantes.nome AS Fabricante,
+    COUNT(produtos.fabricante_id) AS "Quantidade de produtos"
+FROM fabricantes LEFT JOIN produtos
 ON produtos.fabricante_id = fabricantes.id
 GROUP BY fabricante;
 ```
