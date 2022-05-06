@@ -197,7 +197,45 @@ WHERE fabricante_id = 1 OR fabricante_id = 3;
 
 ### Excluir dados de uma tabela
 ```sql
-DELETE FROM fabricantes WHERE id = 4; -- LG
+DELETE FROM fabricantes WHERE id = 4; -- LG 
+```
+
+### Consultas em duas ou mais tabelas (JUNÇÃO)
+```sql
+-- nomedatabela.nomedacoluna
+SELECT produtos.nome, fabricantes.nome
+FROM produtos INNER JOIN fabricantes
+ON produtos.fabricante_id = fabricantes.id;
 
 
+
+-- Explicação do exemplo a cima
+-- nomedatabela.nomedacoluna
+SELECT produtos.nome, fabricantes.nome
+
+-- INNER JOIN é o comando que permite JUNTAR tabelas
+FROM produtos INNER JOIN fabricantes
+
+-- ON comando para indicar o critério da junção
+ON produtos.fabricante_id = fabricantes.id;
+
+
+
+-- Nome do Produto e do Fabricante, ordenados pelo nome do produto
+SELECT 
+    produtos.nome AS Produto,
+    fabricantes.nome AS Fabricante
+FROM produtos INNER JOIN fabricantes
+ON produtos.fabricante_id = fabricantes.id
+ORDER BY produtos.nome;
+
+
+
+-- Fabricante, soma dos preços e quantidade de produtos
+SELECT 
+    fabricantes.nome AS Fabricante,
+    SUM(produtos.preco) AS Total,
+    COUNT(produtos.fabricante_id) AS "Qtd de Produtos"
+FROM produtos INNER JOIN fabricantes
+ON produtos.fabricante_id = fabricantes.id;    
 ```
